@@ -115,6 +115,10 @@ class Quill {
     });
     this.setContents(contents);
     this.history.clear();
+    this.root.setAttribute('role', 'textbox');
+    if (this.options.ariaLabel) {
+      this.root.setAttribute('aria-label', this.options.ariaLabel);
+    }
     if (this.options.placeholder) {
       this.root.setAttribute('data-placeholder', this.options.placeholder);
     }
@@ -435,6 +439,7 @@ Quill.DEFAULTS = {
   bounds: null,
   modules: {},
   placeholder: '',
+  ariaLabel: undefined,
   readOnly: false,
   registry: globalRegistry,
   scrollingContainer: null,
